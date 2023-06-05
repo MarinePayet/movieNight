@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Que regarder ce soir ?{% endblock %}
+
+{% block body %}
+<h1 class='container'>Choisir un film</h1>
+<hr>
+<div class="example-wrapper container">
+    <h2 >Choisir un film par titre : </h2>
+    {% for movie in movies %}
+        <br>
+        <li> {{movie}}
+            <a class="btn btn-primary" href="{{ path('app_movie_show', {id: movie.id} ) }}"> Voir </a>
+        </li>
+    
+    {% endfor %}
+</div>
+
+<hr>
+
+<div class="example-wrapper container">
+    <h2 >Choisir un film par genre : </h2>
+    {% for type in types %}
+        <br>
+        <li> {{type}} <a class="btn btn-primary" href="{{ path('app_type_show', {id: type.id} ) }}"> Voir </a> <a class="btn btn-primary" href="{{ path('app_type_edit', {id: type.id} ) }}"> Edit </a> </li>
+    
+    {% endfor %}
+</div>
+
+<hr>
+
+<div>
+    <h2 >Choisir un film par acteurs : </h2>
+</div>
+
+<div>
+    <h2 > Créer un nouveau Genre :  <a class="btn btn-primary" href="{{ path('app_type_new') }}"> Go ! </a></h2>
+</div>
+<div>
+    <h2 > Créer un nouveau Film :  <a class="btn btn-primary" href="{{ path('app_movie_new') }}"> Go ! </a></h2>
+</div>
+
+{% endblock %}

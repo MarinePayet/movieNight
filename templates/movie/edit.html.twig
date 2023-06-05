@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="form-control container">
+    <div>
+        {{form(form)}}
+    </div>
+</div>
+<br>
+<div class="container"> 
+    <a href="{{ path('app_movies')}}">Back</a>
+</div>
+
+
+{% endblock %}

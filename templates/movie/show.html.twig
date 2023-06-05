@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{movie.title}}{% endblock %}
+
+{% block body %}
+
+<div class="card">
+    <div data-controller="accordion" class="example-wrapper container">
+
+        {% if movie.image %}
+            <img src="{{movie.image}}" alt="affiche du film {{movie.title}}" width="200px">
+        {% endif %}
+        <h1 data-action="click->accordion#toggle"> {{ movie.title}} </h1> 
+        <p>{{movie.type}}</p>
+        <p data-accordion-target="descrip" style="display:none" > {{movie.description}} </p>
+
+    </div>
+</div>
+<hr>
+        <a class="btn btn-primary" href="{{path('app_movie_edit', {id: movie.id})}}"> Modifier </a>
+        <a class="btn btn-primary" href="{{ path('app_movie_delete', {id: movie.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce film ?')">Supprimer</a>
+        <a class="btn btn-primary" href="{{ path('app_movies')}}"> Back </a>
+{% endblock %}

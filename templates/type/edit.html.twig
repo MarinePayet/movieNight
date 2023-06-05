@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Modifier un film{% endblock %}
+
+{% block body %}
+
+<div class="form-control container">
+    <p> Genre à modifier : {{type}} </p>
+    <div>
+        {{form(form)}}
+    </div>
+</div>
+<br>
+<div class="container"> 
+    <a href="{{ path('app_movies')}}">Back</a>
+</div>
+
+
+{% endblock %}

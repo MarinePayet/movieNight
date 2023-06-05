@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{type}}{% endblock %}
+
+{% block body %}    
+
+<div class="example-wrapper container">
+    <h1>Genre : {{type}} </h1>  
+
+
+    {% for movie in type.movies %}
+        <li> {{movie.title}} <a class="btn btn-primary" href="{{ path('app_movie_show', {id: movie.id} ) }}"> Voir </a></li>
+    {% endfor %}
+
+</div>
+<hr>
+<a class="btn btn-primary" href="{{ path('app_movies') }}"> Back</a>
+{% endblock %}

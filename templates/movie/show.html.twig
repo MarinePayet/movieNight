@@ -4,20 +4,27 @@
 
 {% block body %}
 
-<div class="card">
-    <div data-controller="accordion" class="example-wrapper container">
+<div class="container mx-auto mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card " style="width: 18rem;">
+                {% if movie.image %}
+                    <img src="{{movie.image}}" alt="affiche du film {{movie.title}}" width="200px" class="card-img-top">
+                {% endif %}
+                <div class="card-body" data-controller="accordion">
+                    <h5 class="card-title" data-action="click->accordion#toggle"> {{ movie.title}} </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{movie.type}}</h6>
+                    <p data-accordion-target="descrip" style="display:none" class="card-text">{{movie.description}} </p>
 
-        {% if movie.image %}
-            <img src="{{movie.image}}" alt="affiche du film {{movie.title}}" width="200px">
-        {% endif %}
-        <h1 data-action="click->accordion#toggle"> {{ movie.title}} </h1> 
-        <p>{{movie.type}}</p>
-        <p data-accordion-target="descrip" style="display:none" > {{movie.description}} </p>
-
-    </div>
-</div>
+                </div>
+            </div>
+            <a class="btn btn-primary" href="{{path('app_movie_edit', {id: movie.id})}}"> Modifier </a>
+            <a class="btn btn-primary" href="{{ path('app_movie_delete', {id: movie.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce film ?')">Supprimer</a>
+        </div>
+    </div>    
+</div> 
+    
 <hr>
-        <a class="btn btn-primary" href="{{path('app_movie_edit', {id: movie.id})}}"> Modifier </a>
-        <a class="btn btn-primary" href="{{ path('app_movie_delete', {id: movie.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce film ?')">Supprimer</a>
         <a class="btn btn-primary" href="{{ path('app_movies')}}"> Back </a>
 {% endblock %}
+

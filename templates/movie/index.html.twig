@@ -3,28 +3,54 @@
 {% block title %}Que regarder ce soir ?{% endblock %}
 
 {% block body %}
-<h1 class='container'>Choisir un film</h1>
+<h1 class='container'>Choisir un film :</h1>
 <hr>
-<div class="example-wrapper container">
-    <h2 >Choisir un film par titre : </h2>
-    {% for movie in movies %}
-        <br>
-        <li> {{movie}}
-            <a class="btn btn-primary" href="{{ path('app_movie_show', {id: movie.id} ) }}"> Voir </a>
-        </li>
-    
-    {% endfor %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card " style="width: 20rem;">
+                <h2 class="card-title m-1"> Par titre : </h2>
+                {% for movie in movies %}
+                    <br>
+                <div class="card-index-movie"> 
+                    <div class='ml-1'>
+                        <li> {{movie}}</li>
+                    </div>        
+                    <div class='mr-1'>
+                        <a class="btn btn-primary" href="{{ path('app_movie_show', {id: movie.id} ) }}"> Voir </a>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
 
+
 <hr>
 
-<div class="example-wrapper container">
-    <h2 >Choisir un film par genre : </h2>
-    {% for type in types %}
-        <br>
-        <li> {{type}} <a class="btn btn-primary" href="{{ path('app_type_show', {id: type.id} ) }}"> Voir </a> <a class="btn btn-primary" href="{{ path('app_type_edit', {id: type.id} ) }}"> Edit </a> </li>
-    
-    {% endfor %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-0">
+            <div class="card " style="width: 20rem;">
+                <h2 class="card-title m-1"> Par genre : </h2>
+                {% for type in types %}
+                    <br>
+                    <div class="card-index-movie"> 
+                        <div class='ml-1'>
+                            <li> {{type}} </li>
+                        </div>
+                        <div>
+                            <a class="btn btn-primary" href="{{ path('app_type_show', {id: type.id} ) }}"> Voir </a> <a class="btn btn-primary" href="{{ path('app_type_edit', {id: type.id} ) }}"> Edit </a> 
+                        </div>
+                    </div>
+                
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
 
 <hr>
